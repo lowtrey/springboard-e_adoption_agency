@@ -17,7 +17,7 @@ class Pet(db.Model):
 
   species = db.Column(db.Text, nullable=False)
 
-  photo_url = db.Column(db.Text)
+  photo_url = db.Column(db.Text, default="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/240px-No_image_available.svg.png")
 
   age = db.Column(db.Integer)
 

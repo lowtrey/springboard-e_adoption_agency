@@ -2,4 +2,32 @@
 {% block title %}Pets List{% endblock %}
 {% block content %}
 <h1 class="display-1">All Pets</h1>
+<div class="row">
+  {% for pet in pets %}
+  <div class="col-md-4 mt-4 text-center">
+    <div class="card profile-card-4">
+      <div class="card-img-block">
+        <img class="card-img-top" src={{pet.photo_url}} alt="Card image cap">
+      </div>
+      <div class="card-body pt-0">
+        <h5 class="card-title my-2">
+          '{{pet.name}}'
+          {% if pet.available %}
+          is available
+          {% else %}
+          is not available
+          {% endif %}
+        </h5>
+        <p class="card-text">
+          {% if pet.notes %}
+          {{pet.notes}}
+          {% else %}
+          <em>No info available...</em>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}
