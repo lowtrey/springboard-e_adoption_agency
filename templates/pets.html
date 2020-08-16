@@ -2,9 +2,10 @@
 {% block title %}Pets List{% endblock %}
 {% block content %}
 <h1 class="display-1">All Pets</h1>
+<a href="/add" class="btn btn-sm btn-success">Add Pet</a>
 <div class="row">
   {% for pet in pets %}
-  <div class="col-md-4 mt-4 text-center">
+  <div class="col-md-3 mt-4 text-center">
     <div class="card profile-card-4">
       <div class="card-img-block">
         <img class="card-img-top" src={{pet.photo_url}} alt="Card image cap">
