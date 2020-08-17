@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, TextAreaField
-from wtforms.validators import DataRequired, URL, AnyOf
+from wtforms.validators import DataRequired, URL, AnyOf, NumberRange
 
 class PetForm(FlaskForm):
 
@@ -10,6 +10,6 @@ class PetForm(FlaskForm):
 
   photo_url = StringField("Photo URL", validators=[DataRequired(), URL()])
 
-  age = IntegerField("Age", validators=[DataRequired(message="Please enter number")])
+  age = IntegerField("Age", validators=[DataRequired(message="Please enter age"), NumberRange(min=0, max=30, message="Age must be between 0 and 30")])
 
   notes = TextAreaField("Additional Information")
