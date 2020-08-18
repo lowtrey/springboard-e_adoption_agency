@@ -3,13 +3,13 @@
 {% block content %}
 <h1 class="display-1 text-center">Add New Pet</h1>
 <div class="row justify-content-center">
-  <div class="col-md-8">
+  <div class="col-md-5">
     <form method="POST">
       {{form.hidden_tag()}}
       {% for field in form if field.widget.input_type != "hidden" %}
-      <div class="form-group">
+      <div class="form-group text-center">
         {{field.label}}
-        {{field(class_="form-control")}}
+        {{field(class_="form-control form-control-sm")}}
 
         {% for error in field.errors %}
         <small class="form-text text-danger">
@@ -18,8 +18,10 @@
         {% endfor %}
       </div>
       {% endfor %}
-      <button class="btn btn-success">Submit</button>
-      <a href="/" class="btn btn-danger">Go Back</a>
+      <div class="row justify-content-between">
+        <button class="btn btn-success">Submit</button>
+        <a href="/" class="btn btn-danger">Go Back</a>
+      </div>
     </form>
   </div>
 </div>
