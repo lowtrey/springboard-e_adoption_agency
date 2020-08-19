@@ -42,3 +42,9 @@ def add_pet():
     return redirect("/")
   else:
     return render_template("add_form.html", form=form)
+
+@app.route("/<int:id>")
+def show_pet(id):
+  pet = Pet.query.get_or_404(id)
+
+  return render_template("pet.html", pet=pet)
