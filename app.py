@@ -46,5 +46,6 @@ def add_pet():
 @app.route("/<int:id>")
 def show_pet(id):
   pet = Pet.query.get_or_404(id)
+  form = PetForm(obj=pet)
 
-  return render_template("pet.html", pet=pet)
+  return render_template("pet.html", pet=pet, form=form)

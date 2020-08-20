@@ -4,27 +4,55 @@
 <div class="row justify-content-center">
   <h1 class="display-1 text-secondary">{{pet.name}}</h1>
 </div>
-<div class="col-md-3 mt-4 text-center m-auto">
-  <div class="card shadow profile-card-4">
-    <div class="card-img-block">
-      <img class="card-img-top" src={{pet.photo_url}} alt="Card image cap">
+<div class="row justify-content-around mt-4">
+  <div class="col-md-3 text-center m-auto mb-4">
+    <div class="card shadow profile-card-4">
+      <div class="card-img-block">
+        <img class="card-img-top" src={{pet.photo_url}} alt="Card image cap">
+      </div>
+      <div class="card-body pt-0">
+        <h5 class="card-title my-2">
+          {{pet.name}}
+          {% if pet.available %}
+          <span class="font-weight-bold">is available</span>
+          {% else %}
+          <span class="font-weight-bold">is not available</span>
+          {% endif %}
+        </h5>
+        <p class="card-text">
+          {% if pet.notes %}
+          {{pet.notes}}
+          {% else %}
+          <em>No info available...</em>
+          {% endif %}
+        </p>
+      </div>
     </div>
-    <div class="card-body pt-0">
-      <h5 class="card-title my-2">
-        {{pet.name}}
-        {% if pet.available %}
-        <span class="font-weight-bold">is available</span>
-        {% else %}
-        <span class="font-weight-bold">is not available</span>
-        {% endif %}
-      </h5>
-      <p class="card-text">
-        {% if pet.notes %}
-        {{pet.notes}}
-        {% else %}
-        <em>No info available...</em>
-        {% endif %}
-      </p>
+  </div>
+  <div class="col-md-3 text-center mx-auto">
+    <div class="card shadow profile-card-4">
+      <div class="card-body">
+        <h5 class="card-title">Edit {{pet.name}}</h5>
+        <form method="POST">
+          {{form.hidden_tag()}}
+          {% for field in form if field.widget.input_type != "hidden" %}
+          <div class="form-group text-center">
+            {{field.label}}
+            {{field(class_="form-control form-control-sm")}}
+
+            {% for error in field.errors %}
+            <small class="form-text text-danger">
+              {{error}}
+            </small>
+            {% endfor %}
+          </div>
+          {% endfor %}
+          <div class="row justify-content-between">
+            <button class="btn btn-success">Save Changes</button>
+            <a href="/" class="btn btn-danger">Go Back</a>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
