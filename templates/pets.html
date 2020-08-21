@@ -25,9 +25,7 @@
         </h5>
         <p class="card-text">
           {% if pet.notes %}
-          {{pet.notes}}
-          {% else %}
-          <em>No info available...</em>
+          "{{pet.notes}}"
           {% endif %}
         </p>
         <a href="/{{pet.id}}" class="btn btn-sm btn-light">{{pet.name}}'s Details</a>
